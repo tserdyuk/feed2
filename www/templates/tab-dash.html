@@ -2,7 +2,9 @@
   <ion-content class="padding">
     <ul class="list">
       <li ng-repeat="item in items | orderBy:config.item.date:true | limitTo:50" class="item">
-        <a href="">{{ item[config.item.name] }}</a>
+        <a ng-href="#/tab/dash/{{item[config.item.id]}}/{{item[config.item.title]}}">
+          {{ item[config.item.title] }}
+        </a>
       </li>
     </ul>
   </ion-content>

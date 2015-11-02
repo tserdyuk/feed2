@@ -22,8 +22,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $stateParams, $http) {
+  $scope.title = $stateParams.title
+  $http.get(config.api.item + $stateParams.id).then(function(response) {
+    $scope.content = response.data.body
+  })
 })
 
 .controller('AccountCtrl', function($scope) {
