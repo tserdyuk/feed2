@@ -1,9 +1,11 @@
-<ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+<ion-view view-title="Прочитанные Сообщения">
+  <ion-content class="padding">
+    <ul class="list">
+      <li ng-repeat="item in items | orderBy:config.item.date:true | limitTo:50" class="item">
+        <a ng-href="#/tab/account/{{item[config.item.id]}}/{{item[config.item.title]}}">
+          {{ item[config.item.title] }}
+        </a>
+      </li>
+    </ul>
   </ion-content>
 </ion-view>
