@@ -1,7 +1,7 @@
 <ion-view view-title="Новые Сообщения">
   <ion-content class="padding">
     <ul class="list">
-      <li ng-repeat="item in items | orderBy:config.item.date:true | limitTo:50 track by item[config.item.id]" class="item">
+      <li ng-repeat="item in all | orderBy:config.item.date:true | limitTo:50 track by item[config.item.id]" class="item">
         <a ng-href="#/tab/dash/{{item[config.item.id]}}/{{item[config.item.title]}}">
           {{ item[config.item.title] }}
         </a>

@@ -1,14 +1,19 @@
 angular.module('starter.controllers', [])
 
-.controller('Main', function($scope, $window) {
+.controller('Main', function($scope, $window, $http) {
   $scope.config = config
+  if ($window.localStorage.all) {
+    $scope.all = JSON.parse($window.localStorage.all)
+  } else {
+    $http.get(config.api.all).then(function(response) {
+      $scope.all = response.data.items
+      $window.localStorage.all = JSON.stringify($scope.all)
+    })
+  }
   $scope.read = JSON.parse($window.localStorage.read || '[]')
 })
 
-.controller('DashCtrl', function($scope, $http) {
-  $http.get(config.api.all).then(function(response) {
-    $scope.items = response.data.items
-  })
+.controller('DashCtrl', function($scope) {
 })
 
 .controller('ChatsCtrl', function($scope, $http) {
