@@ -24,11 +24,13 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, $http, $window) {
   $scope.title = $stateParams.title
+  $scope.loading = true
   $http.get(config.api.item + $stateParams.id).then(function(response) {
     $scope.content = response.data.body
-    if (!$scope.read.find(function(item) {
+    $scope.loading = false
+    if ($scope.read.filter(function(item) {
       return item.id == $stateParams.id
-    })) {
+    }).length == 0) {
       var item = {}
       item[config.item.title] = $stateParams.title
       item[config.item.id] = $stateParams.id

@@ -1,5 +1,6 @@
 <ion-view view-title="{{title}}">
   <ion-content class="padding">
     <div ng-bind-html="content"></div>
+    <ion-spinner ng-if="loading"></ion-spinner>
   </ion-content>
 </ion-view>
