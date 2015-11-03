@@ -11,12 +11,19 @@ angular.module('starter.controllers', [])
       $window.localStorage.all = JSON.stringify($scope.model.all)
     })
   }
+  $scope.model.read = JSON.parse($window.localStorage.read || '[]')
+  $scope.model.selected = JSON.parse($window.localStorage.selected || '[]')
+
+  var read = {}
+  $scope.model.read.forEach(function(item) {
+    read[item.id] = true
+  })
   var time = new Date().getTime()
   $scope.model.all = $scope.model.all.filter(function(item) {
     return config.item.getDate(item).getTime() < time
+  }).filter(function(item) {
+    return !read[item.id]
   })
-  $scope.model.read = JSON.parse($window.localStorage.read || '[]')
-  $scope.model.selected = JSON.parse($window.localStorage.selected || '[]')
 })
 
 .controller('DashCtrl', function($scope) {
@@ -55,6 +62,9 @@ angular.module('starter.controllers', [])
       item[config.item.id] = $stateParams.id
       $scope.model.read.unshift(item)
       $window.localStorage.read = JSON.stringify($scope.model.read)
+      $scope.model.all = $scope.model.all.filter(function(item) {
+        return item.id != $stateParams.id
+      })
     }
   })
 })
