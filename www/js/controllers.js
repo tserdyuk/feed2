@@ -11,18 +11,32 @@ angular.module('starter.controllers', [])
     })
   }
   $scope.read = JSON.parse($window.localStorage.read || '[]')
+  $scope.selected = JSON.parse($window.localStorage.selected || '[]')
 })
 
 .controller('DashCtrl', function($scope) {
 })
 
 .controller('ChatsCtrl', function($scope, $http) {
-  $http.get(config.api.all).then(function(response) {
-    $scope.items = response.data.items
-  })
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, $http, $window) {
+  $scope.select = $scope.selected.filter(function(item) {
+    return item.id == $stateParams.id
+  }).length > 0
+  $scope.change = function(value) {
+    if (value) {
+      var item = {}
+      item[config.item.title] = $stateParams.title
+      item[config.item.id] = $stateParams.id
+      $scope.selected.unshift(item)
+    } else {
+      $scope.selected = $scope.selected.filter(function(item) {
+        return item.id != $stateParams.id
+      })
+    }
+    $window.localStorage.selected = JSON.stringify($scope.selected)
+  }
   $scope.title = $stateParams.title
   $scope.loading = true
   $http.get(config.api.item + $stateParams.id).then(function(response) {
