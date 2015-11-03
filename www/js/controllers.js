@@ -11,6 +11,10 @@ angular.module('starter.controllers', [])
       $window.localStorage.all = JSON.stringify($scope.model.all)
     })
   }
+  var time = new Date().getTime()
+  $scope.model.all = $scope.model.all.filter(function(item) {
+    return config.item.getDate(item).getTime() < time
+  })
   $scope.model.read = JSON.parse($window.localStorage.read || '[]')
   $scope.model.selected = JSON.parse($window.localStorage.selected || '[]')
 })
