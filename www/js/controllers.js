@@ -32,7 +32,7 @@ angular.module('starter.controllers', [])
 .controller('ChatsCtrl', function($scope, $http) {
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, $http, $window) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, $http, $window, $sce) {
   $scope.select = $scope.model.selected.filter(function(item) {
     return item.id == $stateParams.id
   }).length > 0
@@ -52,7 +52,8 @@ angular.module('starter.controllers', [])
   $scope.title = $stateParams.title
   $scope.loading = true
   $http.get(config.api.item + $stateParams.id).then(function(response) {
-    $scope.content = response.data.body
+    $scope.content = $sce.trustAsHtml(response.data[config.item.content]
+      .replace(/<i>/ig, '<i style="font-style: italic;"'))
     $scope.loading = false
     if ($scope.model.read.filter(function(item) {
       return item.id == $stateParams.id
