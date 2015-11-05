@@ -1,0 +1,17 @@
+{
+  "version": "2.0",
+  "start": "jade:index -> watch:index, scriptWatch:app -> serve",
+  "serve": ["cd ionic; ionic serve"],
+  ":index": {
+    "task": "jade:index",
+    "plumber": true,
+    "pretty": true,
+    "src": "src/index.jade",
+    "dest": "ionic/www"
+  },
+  ":app": {
+    "main": "src/app.js",
+    "output": "app.js",
+    "dest": "ionic/www"
+  }
+}

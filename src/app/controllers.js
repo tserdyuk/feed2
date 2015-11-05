@@ -1,5 +1,6 @@
-angular.module('starter.controllers', [])
+import config from './config'
 
+export default angular.module('starter.controllers', [])
 .controller('Main', function($scope, $window, $http) {
   $scope.config = config
   $scope.model = {
