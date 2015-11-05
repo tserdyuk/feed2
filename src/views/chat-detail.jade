@@ -1,0 +1,5 @@
+ion-view(view-title="{{title}}")
+	ion-content.padding
+		ion-checkbox(ng-model="select" ng-change="change(select)") Избранное
+		div(ng-bind-html="content")
+		ion-spinner(ng-if="loading")

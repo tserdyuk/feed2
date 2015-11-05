@@ -1,0 +1,6 @@
+ion-view(view-title="Прочитанные Сообщения")
+	ion-content.padding
+		ul.list
+			li.item(ng-repeat="item in model.read | limitTo:50 track by item[config.item.id]")
+				a(ng-href="#/tab/account/{{item[config.item.id]}}/{{item[config.item.title]}}")
+					| {{ item[config.item.title] }}

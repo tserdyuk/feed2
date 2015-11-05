@@ -1,0 +1,6 @@
+ion-view(view-title="Избранные Сообщения")
+	ion-content.padding
+		ul.list
+			li.item(ng-repeat="item in model.selected track by item[config.item.id]")
+				a(ng-href="#/tab/chats/{{item[config.item.id]}}/{{item[config.item.title]}}")
+					| {{ item[config.item.title] }}
