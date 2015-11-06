@@ -22,7 +22,7 @@ export default function($scope, $stateParams, $http, $window, $sce) {
 		$scope.content = $sce.trustAsHtml(response.data[ic.content]
 			.replace(/<i>/ig, '<i style="font-style: italic;"'))
 		$scope.loading = false
-		if (!$scope.readMap($stateParams.id)) {
+		if (!$scope.readMap[$stateParams.id]) {
 			var item = {}
 			item[ic.title] = $stateParams.title
 			item[ic.id] = $stateParams.id
