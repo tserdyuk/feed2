@@ -1,23 +1,25 @@
 import _ from 'lodash'
+import store from 'store'
 import { api } from './config'
 import { Item } from './model'
 
-export default function($scope, $window, $http) {
+export default function($scope, $http) {
 	function init(items) {
 		items.forEach(Item)
 		$scope.model = {
 			items: items,
 			index: _.indexBy(items, _.method('getId')),
-			read: JSON.parse($window.localStorage.read || '[]'),
-			selected: JSON.parse($window.localStorage.selected || '[]')
+			read: store.get('read') || [],
+			selected: store.get('selected') || []
 		}
 	}
-	if ($window.localStorage.items) {
-		init(JSON.parse($window.localStorage.items))
+	const items = store.get('items')
+	if (items) {
+		init(items)
 	} else {
-		$http.get(api.all).then(response => {
-			$window.localStorage.items = JSON.stringify(response.data.items)
-			init(response.data.items)
+		$http.get(api.all).then(({ data: { items } }) => {
+			store.set('items', items)
+			init(items)
 		})
 	}
 }

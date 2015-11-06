@@ -1,7 +1,8 @@
 import _ from 'lodash'
+import store from 'store'
 import { item as ic, api } from './config'
 
-export default function($scope, $stateParams, $http, $window, $sce) {
+export default function($scope, $stateParams, $http, $sce) {
 	const { id } = $stateParams
 	$scope.item = $scope.model.index[id]
 	$scope.select = _.contains($scope.model.selected, id)
@@ -11,16 +12,16 @@ export default function($scope, $stateParams, $http, $window, $sce) {
 		} else {
 			_.remove($scope.model.selected, id)
 		}
-		$window.localStorage.selected = JSON.stringify($scope.model.selected)
+		store.set('selected', $scope.model.selected)
 	}
 	$scope.loading = true
-	$http.get(api.item + id).then(response => {
+	$http.get(api.item + id).then(({ data }) => {
 		$scope.loading = false
-		$scope.content = $sce.trustAsHtml(response.data[ic.content]
+		$scope.content = $sce.trustAsHtml(data[ic.content]
 			.replace(/<i>/ig, '<i style="font-style: italic;"'))
 		if (!_.contains($scope.model.read, id)) {
 			$scope.model.read.unshift(id)
-			$window.localStorage.read = JSON.stringify($scope.model.read)
+			store.set('read', $scope.model.read)
 		}
 	})
 }

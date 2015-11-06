@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "lodash": "3.10.1"
+    "lodash": "3.10.1",
+    "store": "1.3.17"
   }
 }
