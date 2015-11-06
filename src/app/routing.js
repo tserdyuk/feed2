@@ -9,56 +9,45 @@ export default function($stateProvider, $urlRouterProvider) {
 	.state('tab.dash', {
 		url: '/dash',
 		views: {
-			'tab-dash': {
-				templateUrl: 'views/new.html',
-				controller: null
-			}
+			'tab-dash': view('new')
 		}
 	})
 	.state('tab.dash-detail', {
 		url: '/dash/:id/:title',
 		views: {
-			'tab-dash': {
-				templateUrl: 'views/item.html',
-				controller: 'Item'
-			}
+			'tab-dash': view('item', 'Item')
 		}
 	})
 	.state('tab.chats', {
 		url: '/chats',
 		views: {
-			'tab-chats': {
-				templateUrl: 'views/selected.html',
-				controller: null
-			}
+			'tab-chats': view('selected')
 		}
 	})
 	.state('tab.chat-detail', {
 		url: '/chats/:id/:title',
 		views: {
-			'tab-chats': {
-				templateUrl: 'views/item.html',
-				controller: 'Item'
-			}
+			'tab-chats': view('item', 'Item')
 		}
 	})
 	.state('tab.account', {
 		url: '/account',
 		views: {
-			'tab-account': {
-				templateUrl: 'views/read.html',
-				controller: null
-			}
+			'tab-account': view('read')
 		}
 	})
 	.state('tab.account-detail', {
 		url: '/account/:id/:title',
 		views: {
-			'tab-account': {
-				templateUrl: 'views/item.html',
-				controller: 'Item'
-			}
+			'tab-account': view('item', 'Item')
 		}
 	})
 	$urlRouterProvider.otherwise('/tab/dash')
+}
+
+function view(template, controller = null) {
+	return {
+		templateUrl: 'views/' + template + '.html',
+		controller
+	}
 }
