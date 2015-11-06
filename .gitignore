@@ -1,4 +1,5 @@
 node_modules/
+dist/
 
 ionic/www/views/
 ionic/www/app.js
