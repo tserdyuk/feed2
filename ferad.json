@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "start": "jade:html -> watch:html, scriptWatch:app -> serve",
+  "start": "clean -> jade:html -> watch:html, scriptWatch:app -> serve",
   "serve": ["cd ionic; ionic serve"],
   ":html": {
     "task": "jade:html",
@@ -13,5 +13,8 @@
     "main": "src/app/app.js",
     "output": "app.js",
     "dest": "ionic/www"
+  },
+  "clean": {
+    "dest": "ionic/www/views"
   }
 }
