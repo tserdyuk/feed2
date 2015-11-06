@@ -1,14 +1,13 @@
-import config from './config'
+import _ from 'lodash'
+import { item as ic, api } from './config'
 
 export default function($scope, $stateParams, $http, $window, $sce) {
-	$scope.select = $scope.model.selected.filter(function(item) {
-		return item.id == $stateParams.id
-	}).length > 0
+	$scope.select = _.find($scope.model.selected, ic.id, $stateParams.id) != null
 	$scope.change = function(value) {
 		if (value) {
 			var item = {}
-			item[config.item.title] = $stateParams.title
-			item[config.item.id] = $stateParams.id
+			item[ic.title] = $stateParams.title
+			item[ic.id] = $stateParams.id
 			$scope.model.selected.unshift(item)
 		} else {
 			$scope.model.selected = $scope.model.selected.filter(function(item) {
@@ -19,18 +18,16 @@ export default function($scope, $stateParams, $http, $window, $sce) {
 	}
 	$scope.title = $stateParams.title
 	$scope.loading = true
-	$http.get(config.api.item + $stateParams.id).then(function(response) {
-		$scope.content = $sce.trustAsHtml(response.data[config.item.content]
+	$http.get(api.item + $stateParams.id).then(function(response) {
+		$scope.content = $sce.trustAsHtml(response.data[ic.content]
 			.replace(/<i>/ig, '<i style="font-style: italic;"'))
 		$scope.loading = false
-		if ($scope.model.read.filter(function(item) {
-			return item.id == $stateParams.id
-		}).length == 0) {
+		if (!$scope.readMap($stateParams.id)) {
 			var item = {}
-			item[config.item.title] = $stateParams.title
-			item[config.item.id] = $stateParams.id
+			item[ic.title] = $stateParams.title
+			item[ic.id] = $stateParams.id
 			$scope.model.read.unshift(item)
-			$scope.readMap[item[config.item.id]] = item
+			$scope.readMap[item[ic.id]] = item
 			$window.localStorage.read = JSON.stringify($scope.model.read)
 		}
 	})
