@@ -5,43 +5,29 @@ export default function($stateProvider, $urlRouterProvider) {
 		abstract: true,
 		templateUrl: 'views/tabs.html'
 	})
-	.state('view.new', {
-		url: '/new',
-		views: {
-			'new': view('new')
-		}
-	})
-	.state('view.new-item', {
-		url: '/new/:id/:title',
-		views: {
-			'new': view('item', 'Item')
-		}
-	})
-	.state('view.selected', {
-		url: '/selected',
-		views: {
-			'selected': view('selected')
-		}
-	})
-	.state('view.selected-item', {
-		url: '/selected/:id/:title',
-		views: {
-			'selected': view('item', 'Item')
-		}
-	})
-	.state('view.read', {
-		url: '/read',
-		views: {
-			'read': view('read')
-		}
-	})
-	.state('view.read-item', {
-		url: '/read/:id/:title',
-		views: {
-			'read': view('item', 'Item')
-		}
-	})
+	.state('view.new', state('/new', {
+		'new': view('new')
+	}))
+	.state('view.new-item', state('/new/:id/:title', {
+		'new': view('item', 'Item')
+	}))
+	.state('view.selected', state('/selected', {
+		'selected': view('selected')
+	}))
+	.state('view.selected-item', state('/selected/:id/:title', {
+		'selected': view('item', 'Item')
+	}))
+	.state('view.read', state('/read', {
+		'read': view('read')
+	}))
+	.state('view.read-item', state('/read/:id/:title', {
+		'read': view('item', 'Item')
+	}))
 	$urlRouterProvider.otherwise('/new')
+}
+
+function state(url, views) {
+	return { url, views }
 }
 
 function view(template, controller = null) {
