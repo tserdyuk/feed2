@@ -5,10 +5,10 @@ import { Item } from './model'
 export default function($scope, $window, $http) {
 	$scope.config = config
 	$scope.model = {
-		read: JSON.parse($window.localStorage.read || '[]'),
-		selected: JSON.parse($window.localStorage.selected || '[]')
+		read: JSON.parse($window.localStorage.read || '[]').map(Item),
+		selected: JSON.parse($window.localStorage.selected || '[]').map(Item)
 	}
-	$scope.readMap = _.indexBy($scope.model.read, config.item.id)
+	$scope.readMap = _.indexBy($scope.model.read, _.method('getId'))
 	$scope.isNew = item => !(item.getId() in $scope.readMap)
 	$scope.isRecent = item => item.getTime() < new Date().getTime()
 	if ($window.localStorage.all) {

@@ -2,6 +2,7 @@ import config from './config'
 
 const ci = config.item
 function getId() { return this[ci.id] }
+function getTitle() { return this[ci.title] }
 function getDate() { return ci.getDate(this) }
 function getTime() { return this.getDate().getTime() }
 
