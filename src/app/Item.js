@@ -30,10 +30,8 @@ export default function($scope, $stateParams, $http, $window, $sce) {
 			item[config.item.title] = $stateParams.title
 			item[config.item.id] = $stateParams.id
 			$scope.model.read.unshift(item)
+			$scope.readMap[item[config.item.id]] = item
 			$window.localStorage.read = JSON.stringify($scope.model.read)
-			$scope.model.all = $scope.model.all.filter(function(item) {
-				return item.id != $stateParams.id
-			})
 		}
 	})
 }

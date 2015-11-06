@@ -1,3 +1,4 @@
+import indexBy from 'lodash/collection/indexBy'
 import config from './config'
 
 export default function($scope, $window, $http) {
@@ -6,16 +7,14 @@ export default function($scope, $window, $http) {
 		read: JSON.parse($window.localStorage.read || '[]'),
 		selected: JSON.parse($window.localStorage.selected || '[]')
 	}
+	$scope.readMap = indexBy($scope.model.read, config.item.id)
+	$scope.isNew = item => {
+		return !(item[config.item.id] in $scope.readMap)
+	}
 	$scope.filterAll = function(items) {
-		var read = {}
-		$scope.model.read.forEach(function(item) {
-			read[item.id] = true
-		})
 		var time = new Date().getTime()
 		$scope.model.all = items.filter(function(item) {
 			return config.item.getDate(item).getTime() < time
-		}).filter(function(item) {
-			return !read[item.id]
 		})
 	}
 	if ($window.localStorage.all) {
