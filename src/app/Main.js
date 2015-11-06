@@ -15,7 +15,7 @@ export default function($scope, $window, $http) {
 	if ($window.localStorage.items) {
 		init(JSON.parse($window.localStorage.items))
 	} else {
-		$http.get(api.all).then(function(response) {
+		$http.get(api.all).then(response => {
 			$window.localStorage.items = JSON.stringify(response.data.items)
 			init(response.data.items)
 		})
