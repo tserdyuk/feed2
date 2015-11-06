@@ -1,5 +1,5 @@
 ion-view(view-title="Новые Сообщения")
 	ion-content.padding: ul.list
-		li.item(ng-repeat="item in model.all | filter:isNew | orderBy:config.item.date:true | limitTo:50 track by item[config.item.id]")
+		li.item(ng-repeat="item in model.all | filter:isNew | filter:isRecent | orderBy:config.item.date:true | limitTo:50 track by item[config.item.id]")
 			a(ng-href="#/new/{{item[config.item.id]}}/{{item[config.item.title]}}")
 				| {{ item[config.item.title] }}
