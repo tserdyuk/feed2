@@ -2,7 +2,6 @@
 export default function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 	.state('view', {
-		url: '/view',
 		abstract: true,
 		templateUrl: 'views/tabs.html'
 	})
@@ -12,7 +11,7 @@ export default function($stateProvider, $urlRouterProvider) {
 			'new': view('new')
 		}
 	})
-	.state('view.new-detail', {
+	.state('view.new-item', {
 		url: '/new/:id/:title',
 		views: {
 			'new': view('item', 'Item')
@@ -24,7 +23,7 @@ export default function($stateProvider, $urlRouterProvider) {
 			'selected': view('selected')
 		}
 	})
-	.state('view.chat-detail', {
+	.state('view.selected-item', {
 		url: '/selected/:id/:title',
 		views: {
 			'selected': view('item', 'Item')
@@ -36,13 +35,13 @@ export default function($stateProvider, $urlRouterProvider) {
 			'read': view('read')
 		}
 	})
-	.state('view.read-detail', {
+	.state('view.read-item', {
 		url: '/read/:id/:title',
 		views: {
 			'read': view('item', 'Item')
 		}
 	})
-	$urlRouterProvider.otherwise('/view/new')
+	$urlRouterProvider.otherwise('/new')
 }
 
 function view(template, controller = null) {
