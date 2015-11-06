@@ -2,4 +2,4 @@ ion-view(view-title="Избранные Сообщения")
 	ion-content.padding: ul.list
 		li.item(ng-repeat="id in model.selected")
 			a(ng-href="#/selected/{{id}}")
-				| {{ index[id].getTitle() }}
+				| {{ model.index[id].getTitle() }}

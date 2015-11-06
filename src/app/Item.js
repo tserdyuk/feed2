@@ -3,6 +3,7 @@ import { item as ic, api } from './config'
 
 export default function($scope, $stateParams, $http, $window, $sce) {
 	const { id } = $stateParams
+	$scope.item = $scope.model.index[id]
 	$scope.select = _.contains($scope.model.selected, id)
 	$scope.change = function(value) {
 		if (value) {
@@ -12,7 +13,6 @@ export default function($scope, $stateParams, $http, $window, $sce) {
 		}
 		$window.localStorage.selected = JSON.stringify($scope.model.selected)
 	}
-	$scope.title = $scope.index[id]
 	$scope.loading = true
 	$http.get(api.item + id).then(function(response) {
 		$scope.content = $sce.trustAsHtml(response.data[ic.content]
