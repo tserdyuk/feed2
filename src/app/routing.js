@@ -6,7 +6,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		templateUrl: 'views/tabs.html'
 	})
 	.state('view.new', state('/new', {
-		'new': view('new')
+		'new': view('new', 'New')
 	}))
 	.state('view.new-item', state('/new/:id/:title', {
 		'new': view('item', 'Item')
