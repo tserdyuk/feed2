@@ -9,6 +9,7 @@ function getTime() { return this.getDate().getTime() }
 export default {
 	Item(item) {
 		item.getId = getId
+		item.getTitle = getTitle
 		item.getDate = getDate
 		item.getTime = getTime
 		return item

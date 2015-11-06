@@ -2,4 +2,4 @@ ion-view(view-title="Прочитанные Сообщения")
 	ion-content.padding: ul.list
 		li.item(ng-repeat="item in model.read | limitTo:50 track by item.getId()")
 			a(ng-href="#/read/{{item.getId()}}/{{item.getTitle()}}")
-				| {{ item[config.item.title] }}
+				| {{ item.getTitle() }}
