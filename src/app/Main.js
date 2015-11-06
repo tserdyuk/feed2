@@ -4,12 +4,13 @@ import { Item } from './model'
 
 export default function($scope, $window, $http) {
 	function init(items) {
+		items.forEach(Item)
 		$scope.model = {
-			items: items.map(Item),
-			read: JSON.parse($window.localStorage.read || '[]').map(Item),
-			selected: JSON.parse($window.localStorage.selected || '[]').map(Item)
+			items: items,
+			index: _.indexBy(items, _.method('getId')),
+			read: JSON.parse($window.localStorage.read || '[]'),
+			selected: JSON.parse($window.localStorage.selected || '[]')
 		}
-		$scope.readMap = _.indexBy($scope.model.read, _.method('getId'))
 	}
 	if ($window.localStorage.items) {
 		init(JSON.parse($window.localStorage.items))
