@@ -9,37 +9,37 @@ export default function($stateProvider, $urlRouterProvider) {
 	.state('tab.dash', {
 		url: '/dash',
 		views: {
-			'tab-dash': view('new')
+			'new': view('new')
 		}
 	})
 	.state('tab.dash-detail', {
 		url: '/dash/:id/:title',
 		views: {
-			'tab-dash': view('item', 'Item')
+			'new': view('item', 'Item')
 		}
 	})
 	.state('tab.chats', {
 		url: '/chats',
 		views: {
-			'tab-chats': view('selected')
+			'selected': view('selected')
 		}
 	})
 	.state('tab.chat-detail', {
 		url: '/chats/:id/:title',
 		views: {
-			'tab-chats': view('item', 'Item')
+			'selected': view('item', 'Item')
 		}
 	})
 	.state('tab.account', {
 		url: '/account',
 		views: {
-			'tab-account': view('read')
+			'read': view('read')
 		}
 	})
 	.state('tab.account-detail', {
 		url: '/account/:id/:title',
 		views: {
-			'tab-account': view('item', 'Item')
+			'read': view('item', 'Item')
 		}
 	})
 	$urlRouterProvider.otherwise('/tab/dash')
