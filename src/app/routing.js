@@ -11,7 +11,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		views: {
 			'tab-dash': {
 				templateUrl: 'views/new.html',
-				controller: 'DashCtrl'
+				controller: null
 			}
 		}
 	})
@@ -20,7 +20,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		views: {
 			'tab-dash': {
 				templateUrl: 'views/item.html',
-				controller: 'ChatDetailCtrl'
+				controller: 'Item'
 			}
 		}
 	})
@@ -29,7 +29,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		views: {
 			'tab-chats': {
 				templateUrl: 'views/selected.html',
-				controller: 'ChatsCtrl'
+				controller: null
 			}
 		}
 	})
@@ -38,7 +38,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		views: {
 			'tab-chats': {
 				templateUrl: 'views/item.html',
-				controller: 'ChatDetailCtrl'
+				controller: 'Item'
 			}
 		}
 	})
@@ -47,7 +47,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		views: {
 			'tab-account': {
 				templateUrl: 'views/read.html',
-				controller: 'AccountCtrl'
+				controller: null
 			}
 		}
 	})
@@ -56,7 +56,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		views: {
 			'tab-account': {
 				templateUrl: 'views/item.html',
-				controller: 'ChatDetailCtrl'
+				controller: 'Item'
 			}
 		}
 	})

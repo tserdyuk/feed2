@@ -30,13 +30,7 @@ export default angular.module('starter.controllers', [])
 	}
 })
 
-.controller('DashCtrl', function($scope) {
-})
-
-.controller('ChatsCtrl', function($scope, $http) {
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, $http, $window, $sce) {
+.controller('Item', function($scope, $stateParams, $http, $window, $sce) {
 	$scope.select = $scope.model.selected.filter(function(item) {
 		return item.id == $stateParams.id
 	}).length > 0
@@ -72,7 +66,4 @@ export default angular.module('starter.controllers', [])
 			})
 		}
 	})
-})
-
-.controller('AccountCtrl', function($scope) {
 })
