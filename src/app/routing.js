@@ -10,7 +10,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		url: '/dash',
 		views: {
 			'tab-dash': {
-				templateUrl: 'views/tab-dash.html',
+				templateUrl: 'views/new.html',
 				controller: 'DashCtrl'
 			}
 		}
@@ -19,7 +19,7 @@ export default function($stateProvider, $urlRouterProvider) {
 		url: '/dash/:id/:title',
 		views: {
 			'tab-dash': {
-				templateUrl: 'views/chat-detail.html',
+				templateUrl: 'views/item.html',
 				controller: 'ChatDetailCtrl'
 			}
 		}
@@ -28,34 +28,34 @@ export default function($stateProvider, $urlRouterProvider) {
 		url: '/chats',
 		views: {
 			'tab-chats': {
-				templateUrl: 'views/tab-chats.html',
+				templateUrl: 'views/selected.html',
 				controller: 'ChatsCtrl'
 			}
 		}
 	})
 	.state('tab.chat-detail', {
 		url: '/chats/:id/:title',
-			views: {
+		views: {
 			'tab-chats': {
-				templateUrl: 'views/chat-detail.html',
+				templateUrl: 'views/item.html',
 				controller: 'ChatDetailCtrl'
 			}
 		}
 	})
 	.state('tab.account', {
 		url: '/account',
-			views: {
+		views: {
 			'tab-account': {
-				templateUrl: 'views/tab-account.html',
+				templateUrl: 'views/read.html',
 				controller: 'AccountCtrl'
 			}
 		}
 	})
 	.state('tab.account-detail', {
 		url: '/account/:id/:title',
-			views: {
+		views: {
 			'tab-account': {
-				templateUrl: 'views/chat-detail.html',
+				templateUrl: 'views/item.html',
 				controller: 'ChatDetailCtrl'
 			}
 		}

@@ -3,7 +3,7 @@
   "start": "jade:html -> watch:html, scriptWatch:app -> serve",
   "serve": ["cd ionic; ionic serve"],
   ":html": {
-    "task": "jade:index",
+    "task": "jade:html",
     "plumber": true,
     "pretty": true,
     "src": "src/**/*.jade",
