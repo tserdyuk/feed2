@@ -1,5 +1,6 @@
-import controllers from './controllers'
 
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic'])
 	.run(require('./bars'))
 	.config(require('./routing'))
+	.controller('Main', require('./Main'))
+	.controller('Item', require('./Item'))
