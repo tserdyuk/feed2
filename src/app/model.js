@@ -1,12 +1,15 @@
+import config from './config'
 
-export default function(config) {
-	const ci = config.item
-	return {
-		Item(item) {
-			item.getId = () => item[ci.id]
-			item.getDate = () => ci.getDate(item)
-			item.getTime = () => item.getDate().getTime()
-			return item
-		}
+const ci = config.item
+function getId() { return this[ci.id] }
+function getDate() { return ci.getDate(this) }
+function getTime() { return this.getDate().getTime() }
+
+export default {
+	Item(item) {
+		item.getId = getId
+		item.getDate = getDate
+		item.getTime = getTime
+		return item
 	}
 }
