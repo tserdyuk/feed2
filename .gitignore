@@ -1,5 +1,7 @@
-ionic/www/index.html
+node_modules/
+
+ionic/www/views/
 ionic/www/app.js
-ionic/www/views
+ionic/www/index.html
 
 src/app/config.js
