@@ -10,7 +10,7 @@
     "dest": "ionic/www"
   },
   ":app": {
-    "main": "src/app/app.js",
+    "main": "src/js/app.js",
     "output": "app.js",
     "dest": "ionic/www"
   },

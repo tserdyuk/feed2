@@ -5,4 +5,4 @@ ionic/www/views/
 ionic/www/app.js
 ionic/www/index.html
 
-src/app/config.js
+src/js/config.js
