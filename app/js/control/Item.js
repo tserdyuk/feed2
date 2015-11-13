@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import store from 'store'
-import { item as ic, api } from './config'
+import { item as ic, api } from '../config'
 
 export default function($scope, $stateParams, $http, $sce) {
 	const { id } = $stateParams

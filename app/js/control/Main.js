@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import store from 'store'
-import { api } from './config'
-import { Item } from './model'
+import { api } from '../config'
+import { Item } from '../model'
 
 export default function($scope, $http) {
 	function init(items) {
