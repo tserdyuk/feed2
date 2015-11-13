@@ -6,11 +6,11 @@
     "task": "jade:html",
     "plumber": true,
     "pretty": true,
-    "src": "src/**/*.jade",
+    "src": "app/**/*.jade",
     "dest": "ionic/www"
   },
   ":app": {
-    "main": "src/js/app.js",
+    "main": "app/js/app.js",
     "output": "app.js",
     "dest": "ionic/www"
   },
