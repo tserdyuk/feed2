@@ -40,10 +40,14 @@ angular.module('feed-admin', [
 })
 
 .controller('AddPost', ($scope) => {
-	$scope.post = {}
+	const s = $scope
+	s.post = {}
+	s.save = () => s.posts.$add(s.post)
 })
 .controller('EditPost',  ($scope, $stateParams) => {
-	$scope.post = _.find($scope.posts, 'id', $stateParams.id)
+	const s = $scope
+	s.post = _.find(s.posts, '$id', $stateParams.id)
+	s.save = () => s.posts.$save(s.post)
 })
 .controller('Post', ($scope) => {
 	const s = $scope

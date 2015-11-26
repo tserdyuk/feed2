@@ -4,5 +4,5 @@ script(type="text/ng-template" id="posts.html")
 	div(ng-repeat="item in posts | orderBy:item.delay")
 		| {{ item.title }}
 		| {{ item.delay }}
-		a(ui-sref="edit-post({ id: item.id })") E
+		a(ui-sref="edit-post({ id: item.$id })") E
 		button(ng-click="remove(item)") R
