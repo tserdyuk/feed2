@@ -22,21 +22,11 @@ angular.module('feed-admin', [
 
 .controller('Main', function($scope, $firebaseArray) {
 	$scope.posts = $firebaseArray(new Firebase(config.posts))
-	/*$scope.posts = [{
-		id: '1',
-		title: '1',
-		delay: '1'
-	}, {
-		id: '2',
-		title: '2',
-		delay: '2'
-	}]*/
 })
 
 .controller('Posts', ($scope) => {
 	const s = $scope
-	s.remove = (post) => {
-	}
+	s.remove = post => s.posts.$remove(post)
 })
 
 .controller('AddPost', ($scope) => {
