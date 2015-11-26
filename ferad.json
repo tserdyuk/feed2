@@ -23,7 +23,7 @@
     "plumber": true,
     "src": "admin/index.jade",
 
-    "main": "admin/app.js",
+    "main": "admin/admin.js",
     "output": "app.js",
     "dest": "dist"
   },
