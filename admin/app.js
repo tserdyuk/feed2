@@ -1,7 +1,10 @@
 import angular from 'angular'
+import Firebase from 'firebase'
 import _ from 'lodash'
+import config from './config'
 
 angular.module('feed-admin', [
+	require('angularfire'),
 	require('angular-ui-router')
 ])
 
@@ -20,7 +23,8 @@ angular.module('feed-admin', [
 	$urlRouterProvider.otherwise('/posts')
 })
 
-.controller('Main', function($scope) {
+.controller('Main', function($scope, $firebaseArray) {
+	$scope.items = $firebaseArray(new Firebase(config.posts))
 	$scope.posts = [{
 		id: '1',
 		title: '1',
