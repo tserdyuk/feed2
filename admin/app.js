@@ -10,9 +10,12 @@ angular.module('feed-admin', [
 	.state('posts', {
 		url: '/posts', templateUrl: 'posts.html', controller: 'Posts'
 	}).state('new-post', {
-		url: '/post', templateUrl: 'post.html', controller: 'Post'
+		url: '/post', templateUrl: 'post.html',
+		controller: ($scope) => $scope.post = {}
 	}).state('edit-post', {
-		url: '/post/:id', templateUrl: 'post.html', controller: 'Post'
+		url: '/post/:id', templateUrl: 'post.html',
+		controller: ($scope, $stateParams) =>
+			$scope.post = _.find($scope.posts, 'id', $stateParams.id)
 	})
 	$urlRouterProvider.otherwise('/posts')
 })
@@ -35,8 +38,7 @@ angular.module('feed-admin', [
 	}
 })
 
-.controller('Post', ($scope, $stateParams) => {
+.controller('Post', ($scope) => {
 	const s = $scope
-	s.post = _.find(s.posts, 'id', $stateParams.id)
-	console.log($stateParams.id, s.post)
+	console.log(s.post)
 })
