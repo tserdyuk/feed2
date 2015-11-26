@@ -1,4 +1,10 @@
 script(type="text/ng-template" id="post.html")
 	div(ng-controller="Post")
-		| Post
+		| Название
+		input(ng-model="post.title")
+		| Задержка
+		input(ng-model="post.delay", type="number")
+		| Сообщение
+		textarea(ng-model="post.content")
+		div(ng-bind-html="post.content")
 		button(ng-click="save()") Сохранить

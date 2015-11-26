@@ -5,6 +5,7 @@ import config from './config'
 
 angular.module('feed-admin', [
 	require('angularfire'),
+	require('angular-sanitize'),
 	require('angular-ui-router')
 ])
 
@@ -26,7 +27,7 @@ angular.module('feed-admin', [
 
 .controller('Posts', ($scope) => {
 	const s = $scope
-	s.remove = post => s.posts.$remove(post)
+	s.remove = s.posts.$remove
 })
 
 .controller('AddPost', ($scope) => {
@@ -34,12 +35,11 @@ angular.module('feed-admin', [
 	s.post = {}
 	s.save = () => s.posts.$add(s.post)
 })
-.controller('EditPost',  ($scope, $stateParams) => {
+.controller('EditPost', ($scope, $stateParams) => {
 	const s = $scope
 	s.post = _.find(s.posts, '$id', $stateParams.id)
 	s.save = () => s.posts.$save(s.post)
 })
 .controller('Post', ($scope) => {
 	const s = $scope
-	console.log(s.post)
 })
