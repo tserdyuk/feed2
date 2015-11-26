@@ -1,0 +1,8 @@
+div(ng-controller="Posts")
+	| Посты
+	button(ng-click="add()") Добавить
+	div(ng-repeat="item in items | orderBy:item.delay")
+		| {{ item.title }}
+		| {{ item.delay }}
+		button(ng-click="edit(post)") E
+		button(ng-click="remove(post)") R
