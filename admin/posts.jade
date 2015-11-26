@@ -1,6 +1,6 @@
-div(ng-controller="Posts")
+script(type="text/ng-template" id="posts.html")
 	| Посты
-	button(ng-click="add()") Добавить
+	a(ui-sref="post") Добавить
 	div(ng-repeat="item in items | orderBy:item.delay")
 		| {{ item.title }}
 		| {{ item.delay }}

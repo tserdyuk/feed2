@@ -1,5 +1,23 @@
+import angular from 'angular'
 
-angular.module('feed-admin')
+angular.module('feed-admin', [
+	require('angular-ui-router')
+])
+
+.config(($stateProvider, $urlRouterProvider) => {
+	$stateProvider
+		.state('posts', {
+			url: '/posts',
+			templateUrl: 'posts.html',
+			controller: 'Posts'
+		})
+		.state('post', {
+			url: '/post',
+			templateUrl: 'post.html',
+			controller: 'Post'
+		})
+	$urlRouterProvider.otherwise('/posts')
+})
 
 .controller('Main', function($scope) {
 })
@@ -13,10 +31,12 @@ angular.module('feed-admin')
 		title: '2',
 		delay: '2'
 	}]
-	s.add = () => {
-	}
 	s.edit = (post) => {
 	}
 	s.remove = (post) => {
 	}
+})
+
+.controller('Post', ($scope) => {
+	alert('Post!')
 })
