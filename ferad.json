@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "start": "clean -> jade:html -> watch:html, scriptWatch:app -> ionic-serve",
-  "start-admin": "clean:admin -> jade:admin -> watch:admin, scriptWatch:admin -> serve:admin",
+  "start-admin": "clean:admin -> jade:admin -> watch:admin-jade, scriptWatch:admin -> serve:admin",
   "ionic-serve": ["cd ionic; ionic serve"],
   ":html": {
     "task": "jade:html",
@@ -20,13 +20,16 @@
     "root": "dist",
     "livereload": true,
 
-    "task": "jade:admin",
     "plumber": true,
     "src": "admin/index.jade",
 
     "main": "admin/app.js",
     "output": "app.js",
     "dest": "dist"
+  },
+  ":admin-jade": {
+    "task": "jade:admin",
+    "src": "admin/**/*.jade"
   },
   "clean": {
     "dest": "ionic/www/views"

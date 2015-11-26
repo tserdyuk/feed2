@@ -1,8 +1,8 @@
 script(type="text/ng-template" id="posts.html")
 	| Посты
-	a(ui-sref="post") Добавить
-	div(ng-repeat="item in items | orderBy:item.delay")
+	a(ui-sref="new-post") Добавить
+	div(ng-repeat="item in posts | orderBy:item.delay")
 		| {{ item.title }}
 		| {{ item.delay }}
-		button(ng-click="edit(post)") E
-		button(ng-click="remove(post)") R
+		a(ui-sref="edit-post({ id: item.id })") E
+		button(ng-click="remove(item)") R
