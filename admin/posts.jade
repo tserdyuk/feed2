@@ -1,6 +1,6 @@
 script(type="text/ng-template" id="posts.html")
 	| Посты
-	a(ui-sref="new-post") Добавить
+	a(ui-sref="add-post") Добавить
 	div(ng-repeat="item in posts | orderBy:item.delay")
 		| {{ item.title }}
 		| {{ item.delay }}

@@ -12,20 +12,17 @@ angular.module('feed-admin', [
 	$stateProvider
 	.state('posts', {
 		url: '/posts', templateUrl: 'posts.html', controller: 'Posts'
-	}).state('new-post', {
-		url: '/post', templateUrl: 'post.html',
-		controller: ($scope) => $scope.post = {}
+	}).state('add-post', {
+		url: '/post', templateUrl: 'post.html', controller: 'AddPost'
 	}).state('edit-post', {
-		url: '/post/:id', templateUrl: 'post.html',
-		controller: ($scope, $stateParams) =>
-			$scope.post = _.find($scope.posts, 'id', $stateParams.id)
+		url: '/post/:id', templateUrl: 'post.html', controller: 'EditPost'
 	})
 	$urlRouterProvider.otherwise('/posts')
 })
 
 .controller('Main', function($scope, $firebaseArray) {
-	$scope.items = $firebaseArray(new Firebase(config.posts))
-	$scope.posts = [{
+	$scope.posts = $firebaseArray(new Firebase(config.posts))
+	/*$scope.posts = [{
 		id: '1',
 		title: '1',
 		delay: '1'
@@ -33,7 +30,7 @@ angular.module('feed-admin', [
 		id: '2',
 		title: '2',
 		delay: '2'
-	}]
+	}]*/
 })
 
 .controller('Posts', ($scope) => {
@@ -42,6 +39,12 @@ angular.module('feed-admin', [
 	}
 })
 
+.controller('AddPost', ($scope) => {
+	$scope.post = {}
+})
+.controller('EditPost',  ($scope, $stateParams) => {
+	$scope.post = _.find($scope.posts, 'id', $stateParams.id)
+})
 .controller('Post', ($scope) => {
 	const s = $scope
 	console.log(s.post)
