@@ -32,14 +32,16 @@ angular.module('feed-admin', [
 
 .controller('AddPost', ($scope) => {
 	const s = $scope
+	s.action = '$add'
 	s.post = {}
-	s.save = () => s.posts.$add(s.post)
 })
 .controller('EditPost', ($scope, $stateParams) => {
 	const s = $scope
+	s.action = '$save'
 	s.post = _.find(s.posts, '$id', $stateParams.id)
-	s.save = () => s.posts.$save(s.post)
 })
-.controller('Post', ($scope) => {
+.controller('Post', ($scope, $state) => {
 	const s = $scope
+	s.save = () => s.posts[s.action](s.post)
+		.then(() => $state.go('posts'))
 })
