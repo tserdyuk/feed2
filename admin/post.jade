@@ -4,7 +4,7 @@ script(type="text/ng-template" id="post.html")
 		| &nbsp;Сообщение Курса
 	div(ng-controller="Post")
 		.form-group: button.btn.btn-primary(
-			ng-class="{ disabled: !post.title || !post.delay || !post.content }"
+			ng-class="{ disabled: !post.title || post.delay == undefined || !post.content }"
 			ng-click="save()") Сохранить
 		.form-group
 			label Название
