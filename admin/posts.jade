@@ -1,9 +1,16 @@
 script(type="text/ng-template" id="posts.html")
-	.page-header: h3 Посты
-	a.btn.btn-primary(ui-sref="add-post") Добавить
-	ul.list-group
-		li.list-group-item(ng-repeat="item in posts | orderBy:'delay'")
-			| {{ item.title }}
-			| {{ item.delay }}
-			a.btn.btn-warning.glyphicon.glyphicon-edit(ui-sref="edit-post({ id: item.$id })")
-			button.btn.btn-danger.glyphicon.glyphicon-remove(ng-click="remove(item)")
+	.page-header: h3 Курс
+	table.table
+		thead: tr
+			th: a.btn.btn-primary(ui-sref="add-post") Добавить
+			th Название
+			th Задержка
+			th Редактировать
+			th Удалить
+		tbody
+			tr(ng-repeat="item in posts | orderBy:'delay'")
+				td: b {{ $index + 1 }}
+				td {{ item.title }}
+				td {{ item.delay }}
+				td: a.btn.btn-warning.glyphicon.glyphicon-edit(ui-sref="edit-post({ id: item.$id })")
+				td: button.btn.btn-danger.glyphicon.glyphicon-remove(ng-click="remove(item)")
