@@ -1,8 +1,9 @@
 script(type="text/ng-template" id="posts.html")
-	| Посты
-	a(ui-sref="add-post") Добавить
-	div(ng-repeat="item in posts | orderBy:'delay'")
-		| {{ item.title }}
-		| {{ item.delay }}
-		a(ui-sref="edit-post({ id: item.$id })") E
-		button(ng-click="remove(item)") R
+	.page-header: h3 Посты
+	a.btn.btn-primary(ui-sref="add-post") Добавить
+	ul.list-group
+		li.list-group-item(ng-repeat="item in posts | orderBy:'delay'")
+			| {{ item.title }}
+			| {{ item.delay }}
+			a.btn.btn-warning.glyphicon.glyphicon-edit(ui-sref="edit-post({ id: item.$id })")
+			button.btn.btn-danger.glyphicon.glyphicon-remove(ng-click="remove(item)")
