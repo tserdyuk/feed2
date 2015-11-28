@@ -1,5 +1,5 @@
 ion-view(view-title="Курс")
 	ion-content.padding: ul.list
-		li.item(ng-repeat="item in posts | filter:isRecent | orderBy:item.delay:true track by item.id")
+		li.item(ng-repeat="item in _.values(_.map(model.posts, setId)) | filter:isRecent | orderBy:item.delay:true track by item.id")
 			a(ng-href="#/post/{{item.id}}")
 				| {{ item.title }}

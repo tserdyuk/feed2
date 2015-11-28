@@ -15,9 +15,8 @@ export default function($scope, $http) {
 			selected: store.get('selected') || []
 		}
 	}
-	const items = store.get('items')
-	if (items) {
-		init(items)
+	if (store.get('start')) {
+		init(store.get('items'))
 	} else {
 		$http.get(api.posts).then(({ data }) => {
 			store.set('posts', data)
