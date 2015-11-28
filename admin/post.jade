@@ -1,11 +1,18 @@
 script(type="text/ng-template" id="post.html")
+	.page-header: h3
+		a(ui-sref="posts") Админка:
+		| &nbsp;Сообщение Курса
 	div(ng-controller="Post")
-		a(ui-sref="posts") Главная
-		| Название
-		input(ng-model="post.title")
-		| Задержка
-		input(ng-model="post.delay", type="number")
-		| Сообщение
-		textarea(ng-model="post.content")
-		div(ng-bind-html="post.content")
-		button(ng-click="save()") Сохранить
+		.form-group: button.btn.btn-primary(
+			ng-class="{ disabled: !post.title || !post.delay || !post.content }"
+			ng-click="save()") Сохранить
+		.form-group
+			label Название
+			input.form-control(ng-model="post.title")
+		.form-group
+			label Задержка
+			input.form-control(ng-model="post.delay", type="number")
+		.form-group
+			label HTML Сообщение
+			textarea.form-control(ng-model="post.content")
+		.well(ng-bind-html="post.content")
