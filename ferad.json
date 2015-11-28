@@ -2,6 +2,7 @@
   "version": "2.0",
   "start": "clean -> jade:html -> watch:html, scriptWatch:app -> ionic-serve",
   "start-admin": "clean:admin -> jade:admin -> copy-bootstrap -> watch:admin-jade, scriptWatch:admin -> serve:admin",
+  "deploy-admin": ["ferad 'script:admin' && firebase deploy"],
   "copy-bootstrap": ["cp -rf node_modules/bootstrap/dist dist/bootstrap-3.3.6"],
   "ionic-serve": ["cd ionic; ionic serve"],
   ":html": {

@@ -7,3 +7,4 @@ ionic/www/index.html
 
 app/js/config.js
 admin/config.js
+firebase.json
