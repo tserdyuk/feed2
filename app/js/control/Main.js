@@ -17,6 +17,9 @@ export default function($scope, $http) {
 	}
 	if (store.get('start')) {
 		init(store.get('items'))
+		$http.get(api.posts).then(({ data }) =>
+			store.set('posts', data)
+		)
 	} else {
 		$http.get(api.posts).then(({ data }) => {
 			store.set('posts', data)
