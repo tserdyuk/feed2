@@ -5,6 +5,12 @@ export default function($stateProvider, $urlRouterProvider) {
 		abstract: true,
 		templateUrl: 'views/tabs.html'
 	})
+	.state('view.posts', state('/posts', {
+		'posts': view('posts', 'Posts')
+	}))
+	.state('view.post', state('/post/:id', {
+		'posts': view('post', 'Post')
+	}))
 	.state('view.new', state('/new', {
 		'new': view('new', 'New')
 	}))

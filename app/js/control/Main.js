@@ -8,6 +8,8 @@ export default function($scope, $http) {
 		items.forEach(Item)
 		$scope.model = {
 			items: items,
+			posts: store.get('posts'),
+			start: store.get('start'),
 			index: _.indexBy(items, _.method('getId')),
 			read: store.get('read') || [],
 			selected: store.get('selected') || []
@@ -17,9 +19,13 @@ export default function($scope, $http) {
 	if (items) {
 		init(items)
 	} else {
-		$http.get(api.all).then(({ data: { items } }) => {
-			store.set('items', items)
-			init(items)
+		$http.get(api.posts).then(({ data }) => {
+			store.set('posts', data)
+			store.set('start', new Date().getTime())
+			$http.get(api.all).then(({ data: { items } }) => {
+				store.set('items', items)
+				init(items)
+			})
 		})
 	}
 }
