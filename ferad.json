@@ -1,9 +1,12 @@
 {
-  "version": "2.0",
-  "start": "clean -> jade:html -> watch:html, scriptWatch:app -> ionic-serve",
+  "start": "clean -> jade:html -> watch:html, scriptWatch:app -> serve:ionic",
   "start-admin": "clean:admin -> jade:admin -> copy-bootstrap -> watch:admin-jade, scriptWatch:admin -> serve:admin",
   "copy-bootstrap": ["cp -rf node_modules/bootstrap/dist dist/bootstrap-3.3.6"],
-  "ionic-serve": ["cd ionic; ionic serve"],
+  ":ionic": {
+      "port": 3000,
+      "root": "ionic/www",
+      "livereload": true
+  },
   ":html": {
     "task": "jade:html",
     "plumber": true,
